@@ -1,0 +1,45 @@
+﻿@model YTVidoes.Core.YoutubeChannel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<style>
+    .text-truncate.text-truncate--2{
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    }
+</style>
+<div class="container">
+    <div>
+        <h6>Channel Url</h6>
+        <input class="form-control form-control-lg rounded-0" id="txtChannelName" type="text" value="@(Model !=null ? Model.Url : "")">
+    </div>
+    <div class="mt-2">
+        <button id="btnGetVides" class="btn btn-primary btn-lg rounded-0" onclick="getVideosForChannel()">Get Videos</button>
+    </div>
+</div>
+
+<div id="videos-list">
+    @{
+        await Html.RenderPartialAsync("_ListVideos",Model);
+    }
+</div>
+
+
+<div class="modal fade" id="modal-youtube" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="modal-generic-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="channelVideo" class="embed-responsive-item" width="560" height="315" src="//www.youtube.com/embed/YE7VzlLtp-4" allowfullscreen></iframe>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+</div>
