@@ -4,9 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using YTVidoes.Core;
 
-// Build a config object, using env vars and JSON providers.
 bool endApp = false;
-// Display title as the C# console calculator app.
+
 Console.WriteLine("Youtube Videos From Channel To CSV\r");
 Console.WriteLine("------------------------\n");
 
